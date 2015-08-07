@@ -3,7 +3,13 @@ ShoppingList = new Mongo.Collection('shoppingList');
 if (Meteor.isClient) {
   Template.body.helpers({
     shoppingList: function() {
-      return ShoppingList.find();
+      if (Session.get('hideShow')) {
+        return ShoppingList.find({checked : {$ne: true}});
+      }
+      return ShoppingList.find({});
+    },
+    'checked' : function(){
+      return Session.get('hideShow');
     }
   });
 
@@ -17,18 +23,11 @@ if (Meteor.isClient) {
       });
 
       event.target.item.value = "";
-      //$('.newShoppingList')[0].reset();
 
       return false;
     },
     'change .hideShow' : function(event) {
       Session.set('hideShow', event.target.checked);
-    }
-  });
-
-  Template.body.helpers({
-    'showSessions' : function() {
-      return Session.get('hideShow');
     }
   });
 
