@@ -16,8 +16,8 @@ if (Meteor.isClient) {
         createdDate: new Date()
       });
 
-      //event.target.item.value = "";
-      $('.newShoppingList')[0].reset();
+      event.target.item.value = "";
+      //$('.newShoppingList')[0].reset();
 
       return false;
     },
@@ -36,7 +36,7 @@ if (Meteor.isClient) {
     'click .remove': function() {
       ShoppingList.remove(this._id);
     },
-    'change .hideShow': function() {
+    'change .completed': function() {
       ShoppingList.update(this._id, {$set: {
         checked: !this.checked
       }});
