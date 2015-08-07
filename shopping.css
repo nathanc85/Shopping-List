@@ -1,0 +1,31 @@
+/* CSS declarations go here */
+
+.checked{
+    text-decoration: line-through;
+    color: gray;
+}
+
+.remove {
+    background: red;
+    color:white;
+    font-weight: 900;
+    float:right;
+    margin-right: 50px;
+    clear:both;
+}
+
+.firstHeader {
+    padding: 25px;
+    margin-bottom: 25px;
+    border: ridge;
+}
+
+.subHeader {
+    display: inline-block;
+    clear: both;
+}
+
+.inputSize {
+    min-width: 25%;
+    width: 300px;
+}

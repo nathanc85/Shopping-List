@@ -1,0 +1,37 @@
+<head>
+    <title>
+        Shopping App
+    </title>
+</head>
+
+<body>
+    <header>
+        <form class="newShoppingList">
+            <div class="firstHeader">
+                {{showSessions}}
+                <h1>Shopping App</h1>
+                <div class="subHeader">
+                    <input name="newItem" type="text" placeholder="Add new item" class="inputSize">
+                    <input type="submit" value="Submit" class="btn btn-success">
+                    <h4 class="panel panel-body">
+                        <label class='checkbox-inline'><input type="checkbox" class="hideShow">Hide/Show the completed ones</label>
+                    </h4>
+                </div>
+            </div>
+            <ul>
+                {{#each shoppingList}}
+                    {{> line}}
+                {{/each}}
+            </ul>
+        </form>
+    </header>
+</body>
+
+<template name="line">
+    <li class="{{#if checked}}checked{{/if}}">
+        <input type="checkbox" name="hideShow" class="hideShow" checked="{{checked}}">
+        {{item}}
+        <input type="button" value="Remove" class="remove">
+        <hr>
+    </li>
+</template>
