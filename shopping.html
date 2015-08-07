@@ -6,12 +6,15 @@
 
 <body>
     <header>
+        {{> loginButtons}}
         <form class="newShoppingList">
             <div class="firstHeader">
                 <h1>Shopping App</h1>
                 <div class="subHeader">
-                    <input name="newItem" type="text" placeholder="Add new item" class="inputSize">
-                    <input type="submit" value="Submit" class="btn btn-success">
+                    {{#if currentUser}}
+                        <input name="newItem" type="text" placeholder="Add new item" class="inputSize">
+                        <input type="submit" value="Submit" class="btn btn-success">
+                    {{/if}}
                     <h4 class="panel panel-body">
                         <label class='checkbox-inline'><input type="checkbox" class="hideShow" checked="{{checked}}">Hide/Show the completed ones</label>
                     </h4>
