@@ -8,7 +8,7 @@ if (Meteor.isClient) {
       }
       return ShoppingList.find({});
     },
-    'checked' : function(){
+    checked : function(){
       return Session.get('hideShow');
     }
   });
@@ -17,10 +17,8 @@ if (Meteor.isClient) {
     'submit .newShoppingList' : function(event) {
       //var item = event.target.newItem.value;
       var item = $('input[name="newItem"]').val();
-      ShoppingList.insert({
-        item: item,
-        createdDate: new Date()
-      });
+
+      Meteor.call('addItem', item);
 
       event.target.item.value = "";
 
@@ -33,13 +31,28 @@ if (Meteor.isClient) {
 
   Template.line.events({
     'click .remove': function() {
-      ShoppingList.remove(this._id);
+      Meteor.call('removeItem', this._id);
     },
     'change .completed': function() {
-      ShoppingList.update(this._id, {$set: {
-        checked: !this.checked
-      }});
+      Meteor.call('updateItem', this._id, !this.checked);
     }
   });
 
 }
+
+Meteor.methods({
+  addItem : function (item) {
+    ShoppingList.insert({
+      item: item,
+      createdDate: new Date()
+    });
+  },
+  updateItem : function(id, checked) {
+    ShoppingList.update({_id: id},{$set: {
+      checked: checked
+    }});
+  },
+  removeItem : function (id) {
+    ShoppingList.remove(id);
+  }
+});
