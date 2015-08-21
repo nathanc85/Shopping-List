@@ -31,9 +31,14 @@
 
 <template name="line">
     <li class="{{#if checked}}checked{{/if}}">
-        <input type="checkbox" name="completed" class="completed" checked="{{checked}}">
+        {{#if isOwner}}
+            <input type="button" id="privacy" name="privacy" class="btn {{#if privacy}}btn-danger{{else}}btn-info{{/if}}" value="{{#if privacy}}Private{{else}}Public{{/if}}">
+            <input type="checkbox" name="completed" class="completed" checked="{{checked}}">
+        {{/if}}
         {{item}}
-        <input type="button" value="Remove" class="remove">
+        {{#if isOwner}}
+            <input type="button" value="Remove" class="remove">
+        {{/if}}
         <hr>
     </li>
 </template>

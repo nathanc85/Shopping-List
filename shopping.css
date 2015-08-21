@@ -29,3 +29,24 @@
     min-width: 25%;
     width: 300px;
 }
+
+.red {
+    background: red;
+    font-weight: 500;
+    font-size: 1.5em;
+    color:#ffffff;
+}
+
+.yellow {
+    background: #ffff00;
+    font-weight: 700;
+    font-size: 2.5em;
+    color: green;
+}
+
+.blue {
+    background: blue;
+    font-weight: 900;
+    font-size: 3.5em;
+    color: magenta;
+}
